@@ -10,5 +10,6 @@ COPY target/shift-management-0.0.1-SNAPSHOT.jar /app/app.jar
 #SpringBootが使用するポートをベースイメージに伝える
 EXPOSE 8080
 
-#Dockerが起動したときに実行されるコマンド
-RUN java -jar /app/app.jar
+#ビルドされたイメージからコマンドを実行
+ENTRYPOINT ["java", "-jar", "app.jar"]
+#ここをRUNにしてしまうと、イメージのビルドが終わってないのに実行されてしまう。

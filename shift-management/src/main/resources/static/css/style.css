@@ -1,0 +1,58 @@
+/* --- CSSテンプレート --- */
+
+/* 全体のフォント設定 */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px;
+}
+
+/* 表全体のスタイル */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse; /* セルの境界線を結合 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 表に影を付けて立体感を出す */
+    table-layout: fixed; /* 列幅を均等に保つ */
+}
+
+/* ヘッダーとセルの共通スタイル */
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ddd; /* 境界線 */
+    padding: 12px 8px;      /* 内側の余白 */
+    text-align: center;     /* 文字を中央揃え */
+    vertical-align: top;    /* 内容を上揃えにする */
+}
+
+/* 表のヘッダー行（日付）のスタイル */
+.schedule-table thead th {
+    background-color: #f8f8f8; /* ヘッダーの背景色 */
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* 土曜日のヘッダー */
+.schedule-table .saturday {
+    color: #005ab3; /* 青色 */
+}
+
+/* 日曜日のヘッダー */
+.schedule-table .sunday {
+    color: #d90000; /* 赤色 */
+}
+
+/* 時間列（一番左の列）のスタイル */
+.schedule-table tbody th {
+    background-color: #f8f8f8;
+    font-weight: normal;
+    min-width: 80px; /* 時間表示の幅を確保 */
+}
+
+/* 名前を入れるセルのスタイル */
+.schedule-table td {
+    height: 100px; /* セルの高さを確保 */
+    white-space: pre-wrap; /* 改行を有効にする */
+    word-break: break-word; /* 長い単語でも折り返す */
+    font-size: 0.85em;
+}

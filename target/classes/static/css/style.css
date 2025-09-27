@@ -1,4 +1,4 @@
-/* --- CSSテンプレート（修正版） --- */
+/* --- CSSテンプレート --- */
 
 /* 全体のフォント設定 */
 body {
@@ -10,66 +10,49 @@ body {
 
 /* 表全体のスタイル */
 .schedule-table {
-    border-collapse: collapse;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse; /* セルの境界線を結合 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 表に影を付けて立体感を出す */
+    table-layout: fixed; /* 列幅を均等に保つ */
 }
 
 /* ヘッダーとセルの共通スタイル */
 .schedule-table th,
 .schedule-table td {
-    border: 1px solid #ddd;
-    text-align: center;
-    /* box-sizingは全ての要素に適用するのがモダンな書き方です */
-    box-sizing: border-box;
-    vertical-align: top;
+    border: 1px solid #ddd; /* 境界線 */
+    padding: 12px 8px;      /* 内側の余白 */
+    text-align: center;     /* 文字を中央揃え */
+    vertical-align: top;    /* 内容を上揃えにする */
 }
 
 /* 表のヘッダー行（日付）のスタイル */
 .schedule-table thead th {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8; /* ヘッダーの背景色 */
     font-weight: bold;
     font-size: 0.9em;
-    width: 100px;  /* セルの幅を少し広めに調整 */
-    height: 100px; /* セルの高さを少し広めに調整 */
 }
 
 /* 土曜日のヘッダー */
 .schedule-table .saturday {
-    color: #005ab3;
+    color: #005ab3; /* 青色 */
 }
 
 /* 日曜日のヘッダー */
 .schedule-table .sunday {
-    color: #d90000;
+    color: #d90000; /* 赤色 */
 }
 
 /* 時間列（一番左の列）のスタイル */
 .schedule-table tbody th {
     background-color: #f8f8f8;
     font-weight: normal;
-    min-width: 80px;
-    padding-top: 12px;
+    min-width: 80px; /* 時間表示の幅を確保 */
 }
 
 /* 名前を入れるセルのスタイル */
 .schedule-table td {
-    width: 100px;  /* ヘッダーとサイズを合わせる */
-    height: 100px; /* ヘッダーとサイズを合わせる */
-    padding: 0;   /* ★重要：paddingを削除し、子要素に移します */
-}
-
-/* ★★★ここからが新しい修正の核となる部分です★★★ */
-
-/* セルの中身を囲うdivのスタイル */
-.cell-content {
-    display: flex;             /* このdivをFlexboxにする */
-    flex-direction: column;    /* 子要素を縦に並べる */
-    height: 100%;              /* 親要素(td)の高さ一杯に広がる */
-    padding: 8px;              /* tdからこちらにpaddingを移動 */
-}
-
-/* フォームのスタイル */
-.schedule-table td form {
-    margin-top: auto;          /* Flexbox内で一番下に配置する */
+    height: 100px; /* セルの高さを確保 */
+    white-space: pre-wrap; /* 改行を有効にする */
+    word-break: break-word; /* 長い単語でも折り返す */
+    font-size: 0.85em;
 }

@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1週間スケジュール表</title>
+   <meta name="viewport" content="width=1100">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>1週間スケジュール表</h1>
+    <h1>ぼさき.com</h1>
     <div class="schedule-table-wrapper">
         <table class="schedule-table">
             <thead>
@@ -24,20 +23,22 @@
                 <tr th:each="time, timeStat : ${times}">
                     <th th:text="${time}"></th>
                     <td th:each="date, dateStat : ${dates}">
-                        <div th:with="shiftsInCell=${shiftTable[timeStat.index][dateStat.index]}">
-                            <div th:each="shift : ${shiftsInCell}">
-                                <a th:href="@{/shifts/{id}(id=${shift.id})}" th:text="${shift.personName}"></a>
+                        <div class="cell-content">
+
+                            <div th:with="shiftsInCell=${shiftTable[timeStat.index][dateStat.index]}">
+                                <div th:each="shift : ${shiftsInCell}">
+                                    <a th:href="@{/shifts/{id}(id=${shift.id})}" th:text="${shift.personName}"></a>
+                                </div>
                             </div>
+
+                            <form th:action="@{/shifts/add}" method="post">
+                                <input type="text" name="personName" placeholder="名前" size="8">
+                                <input type="hidden" name="shiftDate" th:value="${date}">
+                                <input type="hidden" name="shiftTime" th:value="${time}">
+                                <button type="submit">追加</button>
+                            </form>
+                            
                         </div>
-
-                        <hr>
-
-                        <form th:action="@{/shifts/add}" method="post">
-                            <input type="text" name="personName" placeholder="名前" size="8">
-                            <input type="hidden" name="shiftDate" th:value="${date}">
-                            <input type="hidden" name="shiftTime" th:value="${time}">
-                            <button type="submit">追加</button>
-                        </form>
                     </td>
                 </tr>
             </tbody>

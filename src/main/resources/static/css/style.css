@@ -56,3 +56,25 @@ body {
     word-break: break-word; /* 長い単語でも折り返す */
     font-size: 0.85em;
 }
+
+@media (max-width: 768px) {
+    /*全体の余白調節*/
+    body {
+        margin: 10px;
+    }
+
+    .schedule-table-wrapper {
+        overflow-x: auto; /*横軸にはみ出た場合表をスクロール方式する*/
+        -webkit-overflow-scrolling: touch; /*iosのスクロールを滑らかにする*/
+    }
+
+    .schedule-table {
+        font-size: 0.9em;
+    }
+
+    .schedule-table head th {
+        font-size: 0.8em;
+    }
+
+    
+    }

@@ -1,12 +1,22 @@
-#ベースイメージ(iso?)の指定
-FROM eclipse-temurin:17-jdk
+#ビルドで使用するイメージ
+FROM maven:3.8.5-openjdk-17 AS builder
 
 #コマンド実行する作業ディレクトリー
 WORKDIR /app
 
-#mvn packageでjar化したファイルをベースイメージのカレントディレクトリにコピー
-COPY target/shift-management-0.0.1-SNAPSHOT.jar /app/app.jar
+#プロジェクトのファイルをすべてコピー
+COPY . .
 
+#jarを作成
+RUN mvn clean package -DskipTests
+
+#実行で使用するイメージ
+FROM openjdk:17-jre-slim
+
+WORKDIR /app
+
+#作成された.jarをビルドで使用したイメージから実行イメージに移す
+COPY --from=builder /app/target/*.jar app.jar
 #SpringBootが使用するポートをベースイメージに伝える
 EXPOSE 8080
 

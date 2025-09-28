@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 #実行で使用するイメージ
-FROM openjdk:17-jre-slim
+FROM amazoncorretto:17-alpine-jdk
 
 WORKDIR /app
 
